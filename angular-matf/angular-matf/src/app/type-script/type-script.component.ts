@@ -12,6 +12,7 @@ export class TypeScriptComponent implements OnInit {
 
   selected : String = 'prva';
 
+
   constructor() {
 
    }
@@ -24,6 +25,13 @@ export class TypeScriptComponent implements OnInit {
     this.definingVariables();
     this.basicTypes();
     this.classes();
+  }
+   public prikaziDugme: boolean = true;
+  public onPrijaviSe(): void{
+    this.prikaziDugme = !this.prikaziDugme;
+  }
+  public onLogIn(): void {
+    
   }
 
   definingVariables(): void {
@@ -61,7 +69,10 @@ export class TypeScriptComponent implements OnInit {
     let musashi = new Person('Musashi', 'Miyamoto', 61);
     console.log(musashi.hello());
   }
+
 }
+
+ 
 
 class Person {
   constructor(

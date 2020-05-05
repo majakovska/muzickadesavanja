@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-matf"
+    }
+  },
+  "defaultProject": "angular-matf",
+  "cli": {
+    "analytics": false
+  }
 }
