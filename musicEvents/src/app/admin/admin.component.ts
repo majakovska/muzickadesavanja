@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from './../../models/event.model';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { EventsService } from '../service/events.service';
 
 @Component({
   selector: 'app-admin',
@@ -18,13 +19,20 @@ export class AdminComponent implements OnInit {
   vrstadogadjaja: string;
   izvodjac: string;
   kapacitet: string;
-  
-  constructor() { }
+
+  constructor(private eventService: EventsService) {
+    this.event = this.eventService.getEvents();
+  }
 
   ngOnInit() {
   }
-  onSaveEvent(u_naziv: string, u_adresa: string, u_datum: string, u_muzika: string, u_ulaz: string, u_cena: string, u_dogadjaj: string, u_izvodjac: string, u_kapacitet: string){
-    this.event.push(new Event(u_naziv, u_adresa, u_datum, u_muzika, u_ulaz, u_cena, u_dogadjaj, u_izvodjac, u_kapacitet));
+  onSaveEvent(u_naziv: string, u_adresa: string, u_datum: string,
+     u_muzika: string, u_ulaz: string, u_cena: string, u_dogadjaj: string,
+      u_izvodjac: string, u_kapacitet: string) {
+
+        this.event = this.eventService.addEvent(u_naziv, u_adresa,
+           u_datum, u_muzika, u_ulaz,
+       u_cena, u_dogadjaj, u_izvodjac, u_kapacitet);
     /*this.adresa = this.event[0].adress;
     this.dogadjaj = this.event[0].event;
     this.datum = this.event[0].date;
@@ -36,41 +44,30 @@ export class AdminComponent implements OnInit {
     console.log(this.dogadjaj);
     console.log(this.adresa);
     console.log(this.datum);
-    
+
     console.log(this.muzika);
     console.log(this.slobodanulaz);
     console.log(this.cena);
     console.log(this.vrstadogadjaja);
     console.log(this.izvodjac);*/
-    for(let i of this.event){
+    for (let i of this.event) {
       console.log(i);
     }
 
   }
-  onDeleteEvent(b_naziv: string, b_adresa:string, b_datum: string){
-    for (let i of this.event){
-      if (i.event == b_naziv && i.adress == b_adresa && i.date == b_datum){
-        console.log("TREBA DA SE BRISE");
-        this.event.splice(this.event.indexOf(i),1);
-      }
-    }
-    for(let i of this.event){
-    console.log(i);
+  onDeleteEvent(b_naziv: string, b_adresa: string, b_datum: string) {
+    this.event = this.eventService.deleteEvent(b_naziv, b_adresa, b_datum);
+    for (let i of this.event) {
+      console.log(i);
     }
   }
-  onChangeEvent(i_naziv: string, i_datum: string, i_muzika: string, i_cena: string, i_izvodjac: string){
-    for (let i of this.event){
-      if (i.event == i_naziv){
-        console.log("TREBA DA SE MENJA");
-        i.date = i_datum;
-        i.typeOfMusic = i_muzika;
-        i.price = i_cena;
-        i.performer = i_izvodjac;
-       } 
-    }
-    for(let i of this.event){
+  onChangeEvent(i_naziv: string, i_datum: string, i_muzika: string, i_cena: string, i_izvodjac: string) {
+
+    this.event = this.eventService.changeEvent(i_naziv, i_datum, i_muzika, i_cena, i_izvodjac);
+
+    for (let i of this.event) {
       console.log(i);
-      }
+    }
 
   }
 
