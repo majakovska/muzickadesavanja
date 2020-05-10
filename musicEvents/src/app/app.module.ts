@@ -12,7 +12,7 @@ import { FiltersComponent } from './filters/filters.component';
 import { HomeComponent } from './home/home.component';
 import { EventComponent } from './event/event.component';
 import { DetailsComponent } from './details/details.component';
-import { SiblingComponent } from './sibling/sibling.component';
+import { MyticketsComponent } from './mytickets/mytickets.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { SiblingComponent } from './sibling/sibling.component';
     HomeComponent,
     EventComponent,
     DetailsComponent,
-    SiblingComponent
+    MyticketsComponent
   ],
   imports: [
     BrowserModule,

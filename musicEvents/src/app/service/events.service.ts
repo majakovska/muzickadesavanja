@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Event } from '../../models/event.model';
-import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +7,17 @@ import {Subject} from 'rxjs';
 export class EventsService {
 
   private events: Event[];
- 
+
+
 
   constructor() {
     this.events = [new Event('Beer fest', 'Usce', '20.08.2020', 'rok', 'jeste', '0',
       'koncert', 'Riblja corba', '10000'), new Event('Ceca Music', 'Usce', '20.08.2020', 'pop', 'nije', '3000',
       'koncert', 'Ceca', '10000'),new Event('Humanitarni koncert', 'Sava centar', '12.05.2020', 'pop', 'jeste', '2000',
       'koncert', 'Sasa Kovacevic', '10000')];
+
   }
- 
+
 
   public getEvents(): Event[] {
     return this.events;
@@ -57,7 +58,10 @@ export class EventsService {
     return this.events;
   }
 
+  filterEvents(type: string): Event[] {
 
+    return this.events.filter((event)=>event.typeOfMusic===type);
+  }
 
 
 }

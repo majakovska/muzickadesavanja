@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { InteractionService } from '../interaction.service';
-
-
+import { InteractionService } from './../service/interaction.service';
+import {Event} from './../../models/event.model';
+import {TisketsService} from './../service/tiskets.service';
 
 @Component({
   selector: 'app-details',
@@ -9,7 +9,7 @@ import { InteractionService } from '../interaction.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
- 
+
   naziv: string;
   datum: string;
   adresa: string;
@@ -20,7 +20,7 @@ export class DetailsComponent implements OnInit {
   izvodjac: string;
   kapacitet: string;
 
- constructor(private _interactionService: InteractionService){
+ constructor(private _interactionService: InteractionService,private ticketsService: TisketsService){
 
  }
 
@@ -37,8 +37,14 @@ export class DetailsComponent implements OnInit {
     this._interactionService.sharedMessage9.subscribe(message9 => this.kapacitet = message9);
 
     }
-  
- 
+
+
+    dodajKartu(){
+this.ticketsService.addTicket(new Event(this.naziv,this.adresa,this.datum,this.muzika
+  ,this.slobodan_ulaz,this.cena,this.vrsta_dogadjaja,this.izvodjac,this.kapacitet));
+    }
+
+
 
 }
 

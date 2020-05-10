@@ -1,14 +1,29 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-
+import {BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class InteractionService {
+
+  // // private naziv: string;
+  // private message = new BehaviorSubject('First Message');
+  // sharedMessage = this.message.asObservable();
+  // constructor() { }
+
+  // nextMessage(message: string) {
+  //   this.message.next(message)
+  // }
+  // // setMessage(message: string){
+  // //    this.naziv=message;
+  // // }
+
+  // // get name() {
+  // //   return this.naziv;
+  // // }
+
   private message1 = new BehaviorSubject('First message');
   sharedMessage1 = this.message1.asObservable();
-  
+
    private message2 = new BehaviorSubject('Second message');
    sharedMessage2 = this.message2.asObservable();
 
@@ -32,17 +47,17 @@ export class InteractionService {
 
    private message9 = new BehaviorSubject('Second message');
    sharedMessage9 = this.message9.asObservable();
-  
+
   constructor() { }
-  
+
    nextMessage(message: string){
      this.message1.next(message);
-    
+
   }
   nextMessage2(message: string){
      this.message2.next(message);
    }
-  
+
    nextMessage3(message: string){
     this.message3.next(message);
   }
@@ -70,5 +85,9 @@ export class InteractionService {
   nextMessage9(message: string){
     this.message9.next(message);
   }
-  
+
+
+
+
+
 }

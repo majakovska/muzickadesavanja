@@ -1,6 +1,6 @@
 import { Component, OnInit,Input} from '@angular/core';
 import {Event} from './../../models/event.model';
-import { InteractionService } from '../interaction.service';
+import { InteractionService } from '../service/interaction.service';
 
 @Component({
   selector: 'app-event',
@@ -10,7 +10,7 @@ import { InteractionService } from '../interaction.service';
 export class EventComponent implements OnInit {
   @Input()
   event: Event;
-  
+
   naziv: string;
   datum: string;
   adresa: string;
@@ -20,7 +20,7 @@ export class EventComponent implements OnInit {
   vrsta_dogadjaja: string;
   izvodjac: string;
   kapacitet: string;
- 
+
   constructor(private _interactionService: InteractionService) { }
 
   ngOnInit() {
@@ -47,7 +47,7 @@ return this.event.date;
 
   return this.event.typeOfMusic;
   }
- 
+
   newMessage(){
     this._interactionService.nextMessage(this.event.event);
     this._interactionService.nextMessage2(this.event.date);
