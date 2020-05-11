@@ -27,25 +27,25 @@ export class InteractionService {
    private message2 = new BehaviorSubject('Second message');
    sharedMessage2 = this.message2.asObservable();
 
-   private message3 = new BehaviorSubject('Second message');
+   private message3 = new BehaviorSubject('Third message');
    sharedMessage3 = this.message3.asObservable();
 
-   private message4 = new BehaviorSubject('Second message');
+   private message4 = new BehaviorSubject('Fourth message');
    sharedMessage4 = this.message4.asObservable();
 
-   private message5 = new BehaviorSubject('Second message');
+   private message5 = new BehaviorSubject('Fifth message');
    sharedMessage5 = this.message5.asObservable();
 
-   private message6 = new BehaviorSubject('Second message');
+   private message6 = new BehaviorSubject('Sixth message');
    sharedMessage6 = this.message6.asObservable();
 
-   private message7 = new BehaviorSubject('Second message');
+   private message7 = new BehaviorSubject('Seventh message');
    sharedMessage7 = this.message7.asObservable();
 
-   private message8 = new BehaviorSubject('Second message');
+   private message8 = new BehaviorSubject('Eighth message');
    sharedMessage8 = this.message8.asObservable();
 
-   private message9 = new BehaviorSubject('Second message');
+   private message9 = new BehaviorSubject(9);
    sharedMessage9 = this.message9.asObservable();
 
   constructor() { }
@@ -82,7 +82,7 @@ export class InteractionService {
     this.message8.next(message);
   }
 
-  nextMessage9(message: string){
+  nextMessage9(message: number){
     this.message9.next(message);
   }
 

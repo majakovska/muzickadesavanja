@@ -19,7 +19,7 @@ export class EventComponent implements OnInit {
   cena: string;
   vrsta_dogadjaja: string;
   izvodjac: string;
-  kapacitet: string;
+  kapacitet: number;
 
   constructor(private _interactionService: InteractionService) { }
 

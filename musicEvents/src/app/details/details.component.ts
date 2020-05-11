@@ -18,7 +18,8 @@ export class DetailsComponent implements OnInit {
   cena: string;
   vrsta_dogadjaja: string;
   izvodjac: string;
-  kapacitet: string;
+  kapacitet: number;
+  capacity: boolean = true;
 
 
 
@@ -41,13 +42,22 @@ export class DetailsComponent implements OnInit {
     }
 
 
-    dodajKartu(){
-this.ticketsService.addTicket(new Event(this.naziv,this.adresa,this.datum,this.muzika
-  ,this.slobodan_ulaz,this.cena,this.vrsta_dogadjaja,this.izvodjac,this.kapacitet));
+    dodajKartu(number: number){
+      if(this.kapacitet <= 0){
+        this.capacity = false;
+       }
+      else{
+        if(this.kapacitet >= number){
+        this.kapacitet = this.kapacitet - number;
+        for(let i = 0; i < number; i++){
+          this.ticketsService.addTicket(new Event(this.naziv,this.adresa,this.datum,this.muzika, this.slobodan_ulaz,this.cena,this.vrsta_dogadjaja,this.izvodjac,this.kapacitet));
+           }
+         }
+         else{
+           window.alert("Uneli ste veci broj karata od preostalog broja slobodnog mesta");
+          }
+      }
     }
-
-
-
 }
 
 

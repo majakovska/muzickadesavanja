@@ -12,9 +12,9 @@ export class EventsService {
 
   constructor() {
     this.events = [new Event('Beer fest', 'Usce', '20.08.2020', 'rok', 'jeste', '0',
-      'koncert', 'Riblja corba', '10000'), new Event('Ceca Music', 'Usce', '20.08.2020', 'pop', 'nije', '3000',
-        'humanitarni koncert', 'Ceca', '10000'), new Event('Humanitarni koncert', 'Sava centar', '12.05.2020', 'pop', 'jeste', '2000',
-          'koncert', 'Sasa Kovacevic', '10000')];
+      'koncert', 'Riblja corba', 3), new Event('Ceca Music', 'Usce', '20.08.2020', 'pop', 'nije', '3000',
+        'humanitarni koncert', 'Ceca', 10000), new Event('Humanitarni koncert', 'Sava centar', '12.05.2020', 'pop', 'jeste', '2000',
+          'koncert', 'Sasa Kovacevic', 10000)];
 
   }
 
@@ -25,7 +25,7 @@ export class EventsService {
 
   public addEvent(u_naziv: string, u_adresa: string,
     u_datum: string, u_muzika: string, u_ulaz: string,
-    u_cena: string, u_dogadjaj: string, u_izvodjac: string, u_kapacitet: string): Event[] {
+    u_cena: string, u_dogadjaj: string, u_izvodjac: string, u_kapacitet: number): Event[] {
     this.events.push(new Event(u_naziv, u_adresa,
       u_datum, u_muzika, u_ulaz,
       u_cena, u_dogadjaj, u_izvodjac, u_kapacitet));

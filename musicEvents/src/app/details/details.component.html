@@ -11,16 +11,20 @@
 {{muzika}} muzici.
 <br>Na {{vrsta_dogadjaja}} cete uzivati u numerama {{izvodjac}}.
 <br> Za ovu manifestaciju ulaz {{slobodan_ulaz}} slobodan.
+<br><p *ngIf="capacity; else full"> U prodaji je preostalo jos {{kapacitet}} karata.</p>
+  <ng-template #full>
+    <p> Nema vise karata u prodaji! </p>
+    </ng-template>
+
 <br> Cena karte je: {{cena}}
 
-</p>
 <br>
 <label #broj_karata>Postovani, unesite kolicinu karata:</label>
 <br>
 <br>
-<input type = "text" >
+<input type = "text" #number>
 <br><br>
-<button class = "btn"  (click)="dodajKartu()" >REZERVISI</button>
+<button class = "btn"  (click)="dodajKartu(number.value)" >REZERVISI</button>
 <br>
 <br>
 <p><strong>HVALA NA UKAZANOM POVERENJU!</strong></p>
