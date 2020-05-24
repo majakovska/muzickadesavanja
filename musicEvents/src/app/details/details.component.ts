@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InteractionService } from './../service/interaction.service';
-import {Event} from './../../models/event.model';
-import {TisketsService} from './../service/tiskets.service';
+import { Event } from './../../models/event.model';
+import { TisketsService } from './../service/tiskets.service';
 
 @Component({
   selector: 'app-details',
@@ -23,9 +23,9 @@ export class DetailsComponent implements OnInit {
 
 
 
- constructor(private _interactionService: InteractionService,private ticketsService: TisketsService){
+  constructor(private _interactionService: InteractionService, private ticketsService: TisketsService) {
 
- }
+  }
 
 
   ngOnInit(): void {
@@ -39,25 +39,29 @@ export class DetailsComponent implements OnInit {
     this._interactionService.sharedMessage8.subscribe(message8 => this.vrsta_dogadjaja = message8);
     this._interactionService.sharedMessage9.subscribe(message9 => this.kapacitet = message9);
 
+  }
+
+
+  dodajKartu(number: string) {
+    if (this.kapacitet <= 0) {
+      this.capacity = false;
     }
-
-
-    dodajKartu(number: number){
-      if(this.kapacitet <= 0){
-        this.capacity = false;
-       }
-      else{
-        if(this.kapacitet >= number){
-        this.kapacitet = this.kapacitet - number;
-        for(let i = 0; i < number; i++){
-          this.ticketsService.addTicket(new Event(this.naziv,this.adresa,this.datum,this.muzika, this.slobodan_ulaz,this.cena,this.vrsta_dogadjaja,this.izvodjac,this.kapacitet));
-           }
-         }
-         else{
-           window.alert("Uneli ste veci broj karata od preostalog broja slobodnog mesta");
-          }
+    else {
+      console.log(number);
+      console.log(this.kapacitet);
+      if (this.kapacitet >= parseInt(number,10)) {
+        this.kapacitet = this.kapacitet -parseInt(number,10);
+        for (let i = 0; i < parseInt(number,10); i++) {
+          this.ticketsService.addTicket(new Event(this.naziv, this.adresa, this.datum, this.muzika, this.slobodan_ulaz, this.cena, this.vrsta_dogadjaja, this.izvodjac, this.kapacitet));
+        }
+      }
+      else {
+        window.alert("Uneli ste veci broj karata od preostalog broja slobodnog mesta");
       }
     }
+
+  }
+
 }
 
 
